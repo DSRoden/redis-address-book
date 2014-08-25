@@ -36,9 +36,7 @@ User.authenticate = function(o, cb){
 
 User.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  User.collection.findOne({_id:_id}, function(err, user){
-    cb(err, user);
-  });
+  User.collection.findOne({_id:_id}, cb);
 };
 
 User.prototype.save = function(cb){

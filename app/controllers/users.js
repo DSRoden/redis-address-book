@@ -22,19 +22,26 @@ exports.login = function(req, res){
   res.render('users/login');
 };
 
+exports.logout = function(req, res){
+  req.session.destroy(function(){
+    res.redirect('/');
+  });
+};
+
 exports.authenticate = function(req, res){
   User.authenticate(req.body, function(user){
     if(user){
-      req.session.userId = user._id;
-      req.session.save(function(){
-        res.redirect('/');
+      req.session.regenerate(function(){
+        req.session.userId = user._id;
+        req.session.save(function(){
+          res.redirect('/');
+        });
       });
-
-      res.redirect('/');
     } else {
       res.redirect('/login');
     }
   });
 };
+
 
 

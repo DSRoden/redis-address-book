@@ -1,0 +1,17 @@
+extends ../shared/template
+block content
+  h2 Home
+  .row
+    .col-xs-12
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th Name
+            th Color
+        thead
+          each address in addresses
+            tr
+              td=address.name
+              td(style="background-color: #{address.color}")
+block scripts
+
