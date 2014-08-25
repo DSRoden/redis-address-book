@@ -17,6 +17,8 @@ exports.create = function(req, res){
 };
 
 exports.login = function(req, res){
+  console.log('looking into res.locals');
+  console.log(res.locals);
   res.render('users/login');
 };
 
